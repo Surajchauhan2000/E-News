@@ -83,8 +83,8 @@ useEffect(() => {
       >
         <div className="container">
           <div className="row my-3">
-            {articles.map((element) => {
-              return (
+            {articles&& articles.map((element) => {
+              return ( 
                 <div className="col md-4" key={element.url}>
                   <NewsItem
                     title={element.title}
