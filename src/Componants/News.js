@@ -8,9 +8,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const News = (props) => {
   // to use the props type we use the static variable
 
-  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);   // loads ? spinner
   const [page, setPage] = useState(1);  // single pages
+  const [articles, setArticles] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   
   const capitalizeFirstLetter = (string) => {
@@ -70,9 +70,9 @@ useEffect(() => {
       
       {loading && <Spinner />}
       <InfiniteScroll
-        dataLength={articles.length}
+        dataLength={articles?articles.length:0}
         next={fetchMoreData}
-        hasMore={articles.length !== totalResults} // is your total data came or still waiting for the data
+        hasMore={articles&&articles.length !== totalResults} // is your total data came or still waiting for the data
         loader={<Spinner />}
 
         // endMessage={
@@ -114,7 +114,7 @@ useEffect(() => {
 News.defaultProps = {
   country: "in",
   pageSize: 8,
-  category: "general",
+  category: "sports",
 };
 News.propsTypes = {
   country: PropTypes.string,
